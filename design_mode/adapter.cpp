@@ -1,8 +1,6 @@
 #include <iostream>
 #include <string>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
+#include <memory>
 
 class VGA {
 public:
@@ -49,7 +47,7 @@ private:
 };
 
 int main() {
-    Computer c1;
-    c1.playvideo(new Adapter(new TV02_video));
+    std::unique_ptr<Computer> my_computer(new Computer);
+    my_computer->playvideo(new Adapter(new TV02_video()));
     return 0;
 }
